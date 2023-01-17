@@ -1,9 +1,6 @@
 Restaurant: Santa Maria
 
 Lucas - 18
-Zach - 13
+Zach - 13.50
 Brendan - 6
 Christina - 9
-Seamus - 9
-Sydney - 10
-Elsa - 11

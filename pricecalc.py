@@ -25,9 +25,18 @@ total_price_euros = 0
 
 eur_to_usd_conversion = 1.1
 
+# Checks if the string is a digit
+def isDigit(x):
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False
+
+
 # If the item is a digit, add it to the list of prices.
 for i in range (len(items)):
-    if items[i].isdigit():
+    if isDigit(items[i]):
         original_pricing.append(items[i])
 
 # Divides the total price of the extras by the amount of people on the list
