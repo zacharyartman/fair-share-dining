@@ -1,9 +1,9 @@
 Restaurant: Santa Maria
 
-Lucas - $22.28
-Zach - $17.33
-Brendan - $9.08
-Christina - $12.38
+Lucas - $28.05
+Zach - $23.10
+Brendan - $14.85
+Christina - $18.15
 
-Total price in Euros: €55.50
-Total price in USD: $61.05
+Total price in Euros: €76.50
+Total price in USD: $84.15
