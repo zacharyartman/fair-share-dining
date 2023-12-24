@@ -31,3 +31,4 @@ The inspiration for this program came from my experience studying abroad. When w
 ## Additional Notes
 - Currency conversion rates are up to date as of December 24, 2023
 - In the future, I hope to connect an API so currency conversion rates are always up to date.
+- There is a text file and a python file in the directory. This is because the program initially used text files and the command line, but I revised it to be web-based. 
