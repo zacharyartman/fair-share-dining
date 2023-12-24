@@ -57,8 +57,8 @@ document.getElementById('addPerson').onclick = function() {
     if (includedInExtras) {
         uniqueIDs.push([uniqueID, (costAfterSplit - (extrasPerPerson * currencyConversion))]);
     }
+    
     updateSplitCosts(extrasPerPerson);
-    doVerification();
     makeFieldsUneditable();
 }
 
@@ -87,6 +87,15 @@ function getCurrency() {
             });            
         }
     }
+    else if (currency == "gbp") {
+        currencyConversion = 1.27;
+        if (currencySymbol != "\u00A3") {
+            currencySymbol = "\u00A3";
+            document.getElementsByName('currency-symbol').forEach(function(element) {
+                element.innerHTML = currencySymbol;
+            });            
+        }
+    }
     return true;
 }
 
@@ -97,6 +106,8 @@ function updateSplitCosts(newExtrasCost) {
         let newValue = parseFloat((individualCostExcludingExtras + (newExtrasCost * currencyConversion)).toFixed(2));
         document.getElementById(uniqueID).innerHTML = `$${newValue}`;
     }
+
+    doVerification();
 }
 
 function doVerification() {

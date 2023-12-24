@@ -10,11 +10,16 @@ input {
   height: 1.5rem;
 }
 
-.title {
+.title, .subtitle {
   display: flex;
-  margin: 1rem;
+  margin: 0.5rem;
   justify-content: center;
 }
+
+.subtitle {
+  color: rgb(0, 91, 121);
+}
+
 
 #total-to-split-section,
 #starting-currency-checkboxes,
@@ -26,6 +31,11 @@ table {
 
 #starting-currency-checkboxes ul{
   list-style: none;
+}
+
+#starting-currency-checkboxes {
+  padding: 1rem;
+  width: 10rem;
 }
 
 button {

@@ -1,0 +1,13 @@
+@media screen and (max-width: 1200px) {
+    #individual-cost {
+        margin-left: 1rem;
+        margin-right: 10rem;
+    }
+    #name {
+        margin-bottom: 1rem;
+    }
+
+    .included-in-extras {
+        margin-left: 1rem;
+    }
+}
