@@ -37,7 +37,6 @@ document.getElementById('addPerson').onclick = function() {
         extrasPerPerson = extras/numPeopleForExtras;
     }
 
-    console.log(includedInExtras);
     let costAfterSplit = includedInExtras ? ((extrasPerPerson + individualCost) * currencyConversion) : (individualCost * currencyConversion);
     costAfterSplit = parseFloat(costAfterSplit.toFixed(2));
 
@@ -48,10 +47,10 @@ document.getElementById('addPerson').onclick = function() {
 
     let template = `
         <tr>
-        <td> ${name} </td>
-        <td> ${individualCost} </td>
-        <td> ${included} </td>
-        <td id = ${uniqueID}> $${costAfterSplit} </td>
+        <td>${name}</td>
+        <td>${currencySymbol}${individualCost}</td>
+        <td>${included}</td>
+        <td id = ${uniqueID}>$${costAfterSplit}</td>
         </tr>`;
 
     table.innerHTML += template;
@@ -60,6 +59,7 @@ document.getElementById('addPerson').onclick = function() {
     }
     updateSplitCosts(extrasPerPerson);
     doVerification();
+    makeFieldsUneditable();
 }
 
 function getCurrency() {
@@ -108,21 +108,33 @@ function doVerification() {
         return total + costNumber;
     }, 0);
     totalBeforeConverted = totalBefore * currencyConversion;
-    totalAfterConverted = totalAfter * currencyConversion;
-    document.getElementById('validation-price-before').innerHTML = (totalBeforeConverted).toFixed(2);
-    document.getElementById('validation-price-after').innerHTML = (totalAfter).toFixed(2);
+    document.getElementById('validation-price-before').innerHTML = `${(totalBeforeConverted).toFixed(2)} (${currencySymbol}${totalBefore.toFixed(2)})`;
+    document.getElementById('validation-price-after').innerHTML = `${(totalAfter).toFixed(2)} (${currencySymbol}${(totalAfter/currencyConversion).toFixed(2)})`;
     let verificationResult = document.getElementById('verification-result');
-    if (totalBeforeConverted < totalAfterConverted) {
-        verificationResult.innerHTML = `Error: incorrect pricing. Unexpected extra $${(totalAfterConverted - totalBeforeConverted).toFixed(2)} (${currencySymbol}${(totalAfter - totalBefore).toFixed(2)}`;
+    let buffer = 0.02;
+    if ((totalAfter - totalBeforeConverted) > buffer) {
+        verificationResult.innerHTML = `Error: incorrect pricing. Unexpected extra $${(totalAfter - totalBeforeConverted).toFixed(2)} (${currencySymbol}${((totalAfter/currencyConversion) - totalBefore).toFixed(2)})`;
         verificationResult.style.color = 'red';
-        
     }
-    else if (totalBeforeConverted > totalAfterConverted) {
-        verificationResult.innerHTML = `Error: incorrect pricing. Missing $${(totalBeforeConverted - totalAfterConverted).toFixed(2)} (${currencySymbol}${(totalBefore - totalAfter).toFixed(2)})`;
+    else if ((totalBeforeConverted - totalAfter) > buffer) {
+        verificationResult.innerHTML = `Error: incorrect pricing. Missing $${(totalBeforeConverted - totalAfter).toFixed(2)} (${currencySymbol}${(totalBefore - (totalAfter/currencyConversion)).toFixed(2)})`;
         verificationResult.style.color = 'red';
     }
     else {
         verificationResult.innerHTML = 'Verification Succeeded!'
         verificationResult.style.color = 'green';
     }
+}
+
+function makeFieldsUneditable() {
+    // remove ability to change starting currency
+    var radios = document.getElementsByName('currency');
+
+    for(var i = 0; i < radios.length; i++) {
+        radios[i].disabled = true;
+    }
+
+    // remove ability to change total bill and extras
+    document.getElementById('total-before').disabled = true;
+    document.getElementById('extras').disabled = true;
 }
