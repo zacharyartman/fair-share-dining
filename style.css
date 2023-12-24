@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@200;300;400;500;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  height: 1.5rem;
+}
+
+.title {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+}
+
+#total-to-split-section,
+#starting-currency-checkboxes,
+.total-bill,
+.validation,
+table {
+  margin: 1rem;
+}
+
+#starting-currency-checkboxes ul{
+  list-style: none;
+}
+
+button {
+  padding-top: 0.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 1rem;
+  border-color: grey;
+  border-style: solid;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(0, 91, 121);
+  color: white;
+  border-color: white;
+}
+
+#included-in-extras {
+  vertical-align: middle;
+  transform : scale(1.25);
+}
+
+#name {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#name,
+#extras,
+#total-before {
+  font-size: 15px;
+  padding: 0.5rem;
+}
+
+#individual-cost {
+  margin-right: 1rem;
+  width: 11rem;
+  font-size: 15px;
+  padding: 0.5rem;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+}
