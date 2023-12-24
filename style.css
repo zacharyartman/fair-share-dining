@@ -1,88 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-* {
+body {
   font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+  margin: 10px;
 }
 
-input {
-  height: 1.5rem;
+input, button, select, textarea {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
 }
 
-.title, .subtitle {
-  display: flex;
-  margin: 0.5rem;
-  justify-content: center;
+.title h1, .subtitle p {
+  color: #005b79;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.subtitle {
-  color: rgb(0, 91, 121);
+.currency-symbol, input[type="text"], input[type="number"], select, textarea {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-
-#total-to-split-section,
-#starting-currency-checkboxes,
-.total-bill,
-.validation,
-table {
-  margin: 1rem;
-}
-
-#starting-currency-checkboxes ul{
-  list-style: none;
-}
-
-#starting-currency-checkboxes {
-  padding: 1rem;
-  width: 10rem;
+input[type="text"], input[type="number"], select, textarea {
+  width: calc(100% - 2rem);
+  padding: 0.8rem;
+  margin-right: 1rem; 
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 button {
-  padding-top: 0.5rem;
-  padding-right: 1.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  background-color: white;
-  border-radius: 10px;
-  margin-left: 1rem;
-  border-color: grey;
-  border-style: solid;
-  transition: all 0.2s ease-in-out;
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
 }
 
 button:hover {
-  cursor: pointer;
-  background-color: rgb(0, 91, 121);
-  color: white;
-  border-color: white;
+  background-color: #45a049;
+  transform: translateY(-2px);
 }
 
-#included-in-extras {
-  vertical-align: middle;
-  transform : scale(1.25);
-}
-
-#name {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-#name,
-#extras,
-#total-before {
-  font-size: 15px;
-  padding: 0.5rem;
-}
-
-#individual-cost {
-  margin-right: 1rem;
-  width: 11rem;
-  font-size: 15px;
-  padding: 0.5rem;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
 }
 
 th, td {
-  border: 1px solid black;
-  padding: 10px;
+  text-align: left;
+  padding: 0.8rem;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f8f8f8;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+input[type="text"]:disabled, input[type="number"]:disabled {
+  background-color: #e0e0e0;
+}
+
+.currency-symbol {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }

@@ -26,14 +26,14 @@
         </div>
     </fieldset>
     <div class="total-bill">
-        <p>Total price of bill (for validation purposes): &#160;<span name="currency-symbol"></span> &#160;<input type="number" id="total-before" placeholder="Enter cost"></p>
-    </div>
+        <p>Total price of bill (for validation purposes): <span class="currency-symbol" name="currency-symbol"></span> <input type="number" id="total-before" placeholder="Enter cost"></p>
+    </div>    
     <section id="total-to-split-section">
-        <p>Total price of extras (cover, water, wine, etc): &#160;<span name="currency-symbol"></span> &#160;<input type="number" id="extras" placeholder="Enter cost"> </p>
+        <p>Total price of extras (cover, water, wine, etc): <span class="currency-symbol" name="currency-symbol"></span> <input type="number" id="extras" placeholder="Enter cost"> </p>
     </section>
-    <div id="data">
-        <input type="text" id="name" placeholder="Enter name">
-        &#160;<span name="currency-symbol"></span> &#160;<input type="number" id="individual-cost" placeholder="Enter individual cost">
+        <div id="data">
+        <p>Name: <input type="text" id="name" placeholder="Enter name"> </p>
+        <p>Individual Cost: <span name="currency-symbol"></span> <input type="number" id="individual-cost" placeholder="Enter individual cost"></p>
         <label for="included-in-extras" class="included-in-extras">Included in split for extras?</label>
         <input type="checkbox" id="included-in-extras" checked>
         <button id="addPerson">Add</button>

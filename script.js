@@ -60,6 +60,7 @@ document.getElementById('addPerson').onclick = function() {
     
     updateSplitCosts(extrasPerPerson);
     makeFieldsUneditable();
+    resetInputFields();
 }
 
 function getCurrency() {
@@ -148,4 +149,11 @@ function makeFieldsUneditable() {
     // remove ability to change total bill and extras
     document.getElementById('total-before').disabled = true;
     document.getElementById('extras').disabled = true;
+}
+
+function resetInputFields() {
+    document.getElementById('name').value = "";
+    document.getElementById('name').placeholder = "Enter name";
+    document.getElementById('individual-cost').value = "";
+    document.getElementById('individual-cost').placeholder = "Enter individual cost";
 }

@@ -1,13 +1,10 @@
-@media screen and (max-width: 1200px) {
-    #individual-cost {
-        margin-left: 1rem;
-        margin-right: 10rem;
+@media screen and (max-width: 768px) {
+    body {
+      padding: 0.5rem;
     }
-    #name {
-        margin-bottom: 1rem;
+  
+    input[type="text"], input[type="number"], select, textarea {
+      width: calc(100% - 2rem); /* Adjust for smaller screens */
     }
-
-    .included-in-extras {
-        margin-left: 1rem;
-    }
-}
+  }
+  
