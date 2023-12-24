@@ -13,6 +13,7 @@ let uniqueIDs = [];
 let table = document.querySelector('table');
 let currencyConversion;
 
+
 document.getElementById('addPerson').onclick = function() {
     if (!hasCurrency) {
         if (!getCurrency()) {
@@ -63,6 +64,14 @@ document.getElementById('addPerson').onclick = function() {
     resetInputFields();
 }
 
+// let enter button work as add button
+document.getElementById('individual-cost').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById('addPerson').click();
+    }
+});
+
 function getCurrency() {
     var ele = document.getElementsByName('currency');
  
@@ -83,18 +92,14 @@ function getCurrency() {
         currencyConversion = 1.1;
         if (currencySymbol != "\u20AC") {
             currencySymbol = "\u20AC";
-            document.getElementsByName('currency-symbol').forEach(function(element) {
-                element.innerHTML = currencySymbol;
-            });            
+            updateCurrencySymbols();        
         }
     }
     else if (currency == "gbp") {
         currencyConversion = 1.27;
         if (currencySymbol != "\u00A3") {
             currencySymbol = "\u00A3";
-            document.getElementsByName('currency-symbol').forEach(function(element) {
-                element.innerHTML = currencySymbol;
-            });            
+            updateCurrencySymbols();           
         }
     }
     return true;
@@ -156,4 +161,14 @@ function resetInputFields() {
     document.getElementById('name').placeholder = "Enter name";
     document.getElementById('individual-cost').value = "";
     document.getElementById('individual-cost').placeholder = "Enter individual cost";
+    document.getElementById('name').focus();
+}
+
+function updateCurrencySymbols() {
+    document.getElementsByName('currency-symbol').forEach(function(element) {
+        element.innerHTML = currencySymbol;
+    });            
+    document.getElementsByName('pseudo-currency-symbol').forEach(function(element) {
+        element.innerHTML = '\u00A0\u00A0\u00A0';
+    })
 }

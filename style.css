@@ -19,13 +19,13 @@ input, button, select, textarea {
   margin-bottom: 1rem;
 }
 
-.currency-symbol, input[type="text"], input[type="number"], select, textarea {
+input[type="text"], input[type="number"], select, textarea {
   display: inline-block;
   vertical-align: middle;
 }
 
 input[type="text"], input[type="number"], select, textarea {
-  width: calc(100% - 2rem);
+  width: calc(100% - 4rem);
   padding: 0.8rem;
   margin-right: 1rem; 
   border: none;
@@ -71,10 +71,4 @@ tr:nth-child(even) {
 
 input[type="text"]:disabled, input[type="number"]:disabled {
   background-color: #e0e0e0;
-}
-
-.currency-symbol {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 0.5rem;
 }
