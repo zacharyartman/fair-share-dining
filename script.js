@@ -48,6 +48,7 @@ function addPerson() {
         alert("Please enter a name.");
     }
     else {
+        name = name.split(' ').join('_');
         persons[name] = [];
         nameInput.value = '';
     
@@ -133,7 +134,7 @@ function getOneCheckboxElement(personName, row) {
     // Create label
     let label = document.createElement('label');
     label.htmlFor = checkboxID;
-    label.textContent = personName;
+    label.textContent = personName.split('_').join(' ');
 
     // Create a container for checkbox and label
     let container = document.createElement('div');
@@ -273,7 +274,7 @@ function onCalculateSplit() {
             let nameCell = document.createElement('td');
             nameCell.className = 'name-cell';
             let nameSpan = document.createElement('span');
-            nameSpan.textContent = personName;
+            nameSpan.textContent = personName.split('_').join(' ');            ;
             nameCell.appendChild(nameSpan);
 
             // create the second column for cost in original currency
@@ -428,6 +429,11 @@ function setCurrency(currency) {
         currencyConversion = 0.0071;
         originalCurrencySymbol = "\u00A5";
         updateCurrencySymbols();           
+    }
+
+    // if there is already a totals table, update the currency conversion
+    if (document.getElementById("TOTALSUMS-owed")) {
+        onCalculateSplit();
     }
 }
 
