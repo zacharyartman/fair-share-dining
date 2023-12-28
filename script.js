@@ -195,9 +195,9 @@ function addRow() {
     let priceInput = document.createElement('input');
     priceInput.type = 'number';
     priceInput.id = `row${rowCount}-price-field`;
-    priceInput.className = 'price-field'
+    priceInput.className = 'price-field';
     priceInput.placeholder = 'ex: 35.00';
-    priceInput.pattern = "\\d*"; 
+    priceInput.pattern = "[0-9]*[.,]?[0-9]*";
     priceInput.inputmode = "decimal";
     priceContainer.appendChild(priceSymbolSpan);
     priceContainer.appendChild(priceInput);

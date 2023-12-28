@@ -87,12 +87,12 @@
             <div class="gratuity-percentage-div">
                 <input type="radio" id="gratuity-percentage-option" name="gratuity-option" checked>
                 <label for="gratuity-percentage-option">(%)</label>
-                <input type="number" id="gratuity-percentage" placeholder="%" pattern="\d*" inputmode="decimal">
+                <input type="number" id="gratuity-percentage" placeholder="%" pattern="[0-9]*[.,]?[0-9]*" inputmode="decimal">
             </div>
             <div>
                 <input type="radio" id="gratuity-amount-option" name="gratuity-option">
                 <label for="gratuity-amount-option">(<span class="currency-symbol"></span>)</label>
-                <input type="number" id="gratuity-amount" placeholder="" pattern="\d*" inputmode="decimal" disabled>
+                <input type="number" id="gratuity-amount" placeholder="" pattern="[0-9]*[.,]?[0-9]*" inputmode="decimal" disabled>
             </div>
         </div>
     </div>
