@@ -15,8 +15,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; /* Center vertically */
-    height: 45px;
     background-color: lightblue;
+    height: auto;
+    padding: 1rem;
 }
 
 #close-header {
