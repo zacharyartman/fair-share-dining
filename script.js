@@ -59,7 +59,7 @@ function addPerson() {
 function addItemsToItemsList() {
     // format item : price
     items = {};
-    let hasDuplicates = false;
+    let hasError = false;
 
     for (let row = 1; row < rowCount + 1; row++) {
         let itemName = document.getElementById(`row${row}-item-text-field`).value;
@@ -67,14 +67,26 @@ function addItemsToItemsList() {
 
         if (itemName in items) {
             alert(`Duplicate item found: ${itemName}. Please remove the duplicate.`);
-            hasDuplicates = true;
+            hasError = true;
+            break;
+        }
+
+        if (itemName == "") {
+            alert(`Missing item name in row ${row}. Please label the item.`);
+            hasError = true;
+            break;
+        }
+
+        if (isNaN(itemPrice)) {
+            alert(`Invalid item price in row ${row}. Please price the item.`);
+            hasError = true;
             break;
         }
 
         items[itemName] = itemPrice;
     }
 
-    return !hasDuplicates; // Return true if no duplicates were found
+    return !hasError; // Return true if no errors were found
 }
 
 
