@@ -1,34 +1,42 @@
-# Fair Share Dining
+# Fair Global Share V2
 
 ## Introduction
-Fair Share Dining is a program I designed to help split expenses fairly when studying or traveling abroad. It features a user-friendly interface for splitting bills and converting foreign currencies to USD, ensuring fair and straightforward bill splitting.
+Fair Global Share V2 is an enhanced version of the original Fair Share Dining program, designed to make splitting expenses easy and fair, especially when studying or traveling abroad. This version offers extended support for multiple currencies and a more interactive user interface for bill splitting and currency conversion to USD.
 
-The inspiration for this program came from my experience studying abroad. When we would go out to meals, one person would pay the entire bill with their card. This person then had the task of manually splitting shared expenses such as cover, water, and wine among those who shared them, and adding the cost of individual orders. Finally, they had to convert the total amount from the foreign currency to USD to calculate the amount each person owed. This program quickly does all of that.
+The inspiration came from my time studying abroad and the need for an application that easily split checks and converted to the proper currency.
 
 ## Features
-- Supports multiple currencies, currently EUR and GBP.
-- Calculates total price of meals, including extras.
-- Splits bills among multiple people and includes options for shared extras.
-- Provides a validation check after currency conversion.
+- **Extended Currency Support**: Supports EUR, GBP, MXN, and JPY, with up-to-date conversion rates as of **December 27, 2023**.
+- **Dynamic Bill Splitting**: Calculates total meal costs, including shared items, and splits bills among participants.
+- **Interactive Receipt Entry**: Users can dynamically add and remove items from the bill, specifying shared participants for each item.
+- **Gratuity and Tax Options**: Allows adding gratuity and tax as a percentage or fixed amount, distributed proportionately among participants.
+- **Currency Conversion Validation**: Offers a validation check post currency conversion to ensure accuracy in calculations.
 
-## How to Set Up
-1. Run `index.html`
-2. Alternatively go to [zacharyartman.com/fairshare](https://zacharyartman.com/fairshare)
+## Setup
+1. Open `index.html` in a web browser.
+2. Alternatively, visit [Fair Global Share V2](https://zacharyartman.com/fairshare).
+
+## Note on Local Usage
+When opening the project locally, please note that the banner to access the deprecated version may not work properly. This is because the `href` attributes in the HTML are set up with  `index` instead of `index.html`. This design choice is intended to hide the `.html` extension in the browser URL when the site is hosted online.
+
 
 ## Usage Instructions
-1. **Choose Starting Currency:** Select either EUR or GBP as your starting currency.
-2. **Enter Bill Details:** Input the total price of the bill and the cost of any extras.
-3. **Add Participants:** Enter the name and individual cost for each person. Mark if they are included in the split for extras.
-4. **View Split Details:** The program will display each person's cost after currency conversion and the total cost.
-5. **Validation:** After splitting, check the validation section for any discrepancies.
+1. **Select Starting Currency**: Choose from EUR, GBP, MXN, or JPY.
+2. **Enter Bill Details**: Input individual items, their prices, and specify the participants sharing each item.
+3. **Add Participants**: Enter names of all participants and assign them to shared items.
+4. **Gratuity and Tax**: Optionally add gratuity and tax.
+5. **Calculate and View Split Details**: The program calculates each person's share in both the original and USD currency.
+6. **Validation**: Check the validation section for discrepancies in pricing.
 
-## Technologies Used
+## Technologies
 - HTML
 - CSS
 - JavaScript
 
+## Additional Information
+- The program uses currency conversion rates accurate as of December 27, 2023.
+- Future updates may include real-time currency conversion rates through an API.
+- Two additional folders, *deprecated-version* and *python-version*, are included for reference, but are no longer used in the program.
 
-## Additional Notes
-- Currency conversion rates are up to date as of December 24, 2023
-- In the future, I hope to connect an API so currency conversion rates are always up to date.
-- There is a text file and a python file in the directory. This is because the program initially used text files and the command line, but I revised it to be web-based. 
+## Version Note
+This version introduces significant enhancements over the original Fair Share Dining program, providing a more comprehensive and user-friendly interface for international bill splitting.

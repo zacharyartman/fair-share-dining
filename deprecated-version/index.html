@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FairGlobalShare Expenses</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./mediaqueries.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            <h1>Fair Global Share Dining Expenses</h1>
+        </div>
+        <div class="subtitle">
+            <p>Splits and converts bills in foreign currencies to USD for fair and easy bill splitting.</p>
+        </div>     
+    </div>
+    <fieldset id="starting-currency-checkboxes">
+        <legend>Starting Currency:</legend>
+        <div>
+            <input type="radio" id="eur" name="currency" value="eur" checked>
+            <label for="eur">EUR (&#8364)</label><br>   
+            <input type="radio" id="gbp" name="currency" value="gbp">
+            <label for="gbp">GBP (&#163)</label>
+        </div>
+    </fieldset>
+    <div class="total-bill">
+        <p>Total price of bill including extras (for validation purposes): </p><span name="currency-symbol"></span> <input type="number" pattern="\d*" inputmode="decimal" id="total-before" placeholder="Enter cost">
+    </div>    
+    <section id="total-to-split-section">
+        <p>Total price of extras (cover, water, wine, etc): </p><span name="currency-symbol"></span> <input type="number" pattern="\d*" inputmode="decimal" id="extras" placeholder="Enter cost">
+    </section>
+        <div id="data">
+        <p>Name: </p><span name="pseudo-currency-symbol"></span> <input type="text" id="name" placeholder="Enter name"> </p>
+        <p>Individual Cost: </p><span name="currency-symbol"></span> <input type="number" pattern="\d*" inputmode="decimal" id="individual-cost" placeholder="Enter individual cost">
+        <label for="included-in-extras" class="included-in-extras">Included in split for extras?</label>
+        <input type="checkbox" id="included-in-extras" checked>
+        <button id="addPerson">Add</button>
+    </div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Individual Cost</th>
+            <th>Included in Extras Split?</th>
+            <th>Cost After Currency Conversion</th>
+        </tr>
+    </table>
+
+    <div class="validation">
+        <p><b>VALIDATION AFTER CURRENCY CONVERSION</b></p> Total before: $<span id="validation-price-before"></span><br> Total after splitting: $<span id="validation-price-after"></span>
+        <p id="verification-result"></p>
+    </div>
+    <script src="./script.js" type="text/JavaScript"></script>
+</body>
+</html>

@@ -1,74 +1,322 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+* {
+    transition: all 0.15s ease-in-out;
+}
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f4f6f8;
-  color: #333;
-  line-height: 1.6;
-  margin: 10px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
 }
 
-input, button, select, textarea {
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 0.5rem;
+.new-version-header {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    height: 45px;
+    background-color: lightblue;
 }
 
-.title h1, .subtitle p {
-  color: #005b79;
-  text-align: center;
-  margin-bottom: 1rem;
+#close-header {
+    margin-left: 3rem;
+    margin-top: 2px;
 }
 
-input[type="text"], input[type="number"], select, textarea {
-  display: inline-block;
-  vertical-align: middle;
+#close-header:hover {
+    cursor: pointer;
 }
 
-input[type="text"], input[type="number"], select, textarea {
-  width: calc(100% - 4rem);
-  padding: 0.8rem;
-  margin-right: 1rem; 
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  background-color: white;
+.title h1,
+.subtitle p {
+    color: #005b79;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+#name {
+    width: 100%;
+    padding: 0.8rem;
+    margin-right: 1rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
-button:hover {
-  background-color: #45a049;
-  transform: translateY(-2px);
+.add-person-section {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.add-person-input {
+    display: flex;
+}
+
+#starting-currency-checkboxes,
+.receipt-section,
+.owed-section {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+.receipt-section {
+    margin-bottom: 1.5rem;
+}
+
+.owed-section {
+    margin-bottom: 3rem;
+}
+
+#name {
+    flex: 1;
+}
+
+#add-person-button,
+#calculate-split-button,
+#add-row-button,
+#remove-row-button {
+    padding: 0.5rem 2rem;
+    font-size: 14px;
+    background-color: #005b79;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    border: solid transparent 1px;
+    flex: 1;
+}
+
+#remove-row-button {
+    background-color: #66AACC;
+}
+
+#calculate-split-button {
+    font-size: 16px;
+    background-color: green
+}
+
+#add-person-button:hover,
+#add-row-button:hover,
+#remove-row-button:hover {
+    cursor: pointer;
+    background-color: rgb(0, 125, 167);
+    border: solid white 1px;
+    border-radius: 6px;
+}
+
+#calculate-split-button:hover {
+    cursor: pointer;
+    background-color: darkgreen;
+    border: solid white 1px;
+    border-radius: 6px;
+}
+
+#add-row-button {
+    margin-top: 0.8rem;
+    margin-left: 0.8rem;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
+    width: 100%;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #ccc;
 }
 
-th, td {
-  text-align: left;
-  padding: 0.8rem;
-  border-bottom: 1px solid #ddd;
+td {
+    border-radius: 10px;
 }
+
+th,
+td {
+    text-align: left;
+    padding: 0.8rem;
+}
+
 
 th {
-  background-color: #f8f8f8;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+    background-color: #f9f9f9;
 }
 
-input[type="text"]:disabled, input[type="number"]:disabled {
-  background-color: #e0e0e0;
+th.item {
+    width: 30%;
 }
+
+th.price {
+    width: 20%;
+}
+
+th.shared-by {
+    width: 50%;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 85%;
+    padding: 0.8rem;
+    margin-right: 1rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    font-size: 14px;
+}
+
+label {
+    margin-right: 0.5rem;
+}
+
+.price input[type="number"]{
+    width: calc(85% - 3rem);
+}
+
+.calculate-split-button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 3rem;
+}
+
+.price-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.price-input-container .price-field {
+    flex-grow: 1;
+    margin-left: 0.5rem;
+}
+
+#unaccounted-for-message {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+#unaccounted-for-text {
+    display: none;
+}
+
+.gratuity-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.gratuity-input-container div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.gratuity-input-container input {
+    max-width: 50px;
+}
+
+.gratuity-input-container input:disabled {
+    background-color: lightgray;
+}
+
+.gratuity-summary {
+    text-align: center;
+}
+.gratuity h3 {
+    padding: 0;
+    margin: 0;
+}
+.gratuity .description {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 0;
+    padding: 0;
+}
+
+.description {
+    font-size: 13px;
+}
+
+@media screen and (max-width: 768px){
+
+    .add-person-input {
+        flex-direction: column;
+    }
+
+    #name {
+        width: auto;
+    }
+
+    #add-row-button {
+        margin-left: 0.3rem;
+    }
+    .calculate-split-button-container {
+        grid-template-columns: 1fr 15fr 1fr;
+    }
+
+	table, tbody, th, td, tr { 
+		display: block; 
+	}
+
+    table {
+        border: none;
+    }
+	th { 
+		display: none;
+	}
+	
+	tr { 
+        border: 0.5px solid #ccc; 
+        margin-top: 1rem;
+        border-radius: 10px;
+    }
+	
+	td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		position: absolute;
+		top: 30%;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+
+    td.shared-by {
+        min-height: 25px;
+    }
+	
+    td.item:before {
+        content: "Item";
+        padding-left: 1rem;
+    }
+    td.price:before {
+        content: "Price";
+        padding-left: 1rem;
+    }
+    td.shared-by:before {
+        content: "Shared By";
+        padding-left: 1rem;
+    }
+    td.name-cell:before {
+        content: "Name";
+        padding-left: 1rem;
+    }
+    td.owed-price-original-currency:before {
+        content:"Cost(Original)";
+        padding-left: 1rem;
+    }
+    td.owed-price-usd:before{
+        content: "Cost(Converted)";
+        padding-left: 1rem;
+    }
+}
+
