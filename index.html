@@ -2,62 +2,63 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>FairGlobalShare V2</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>FairGlobalShare V2</title>
 </head>
 
 <body>
-    <header class="new-version-header">
-        <div>
-            Welcome to the new version of Fair Global Share! To use the old version, <a href="./deprecated-version/">click here</a>
-        </div>
-        <img src="./images/close.svg" id="close-header">
-    </header>
-    <header class="header">
-        <div class="title">
-            <h1>Fair Global Share Dining Expenses</h1>
-        </div>
-        <div class="subtitle">
-            <p>Splits and converts bills in foreign currencies to USD for fair and easy bill splitting.</p>
-        </div>
-    </header>
+  <header class="new-version-header">
+    <div>
+      Welcome to the new version of Fair Global Share! To use the old version, <a href="./deprecated-version/">click
+        here</a>
+    </div>
+    <img src="./images/close.svg" id="close-header">
+  </header>
+  <header class="header">
+    <div class="title">
+      <h1>Fair Global Share Dining Expenses</h1>
+    </div>
+    <div class="subtitle">
+      <p>Splits and converts bills in foreign currencies to USD for fair and easy bill splitting.</p>
+    </div>
+  </header>
 
-    <fieldset id="starting-currency-checkboxes">
-        <legend>Starting Currency:</legend>
-        <div>
-            <input type="radio" id="usd" name="currency" value="usd" checked>
-            <label for="usd">USD ($): United States Dollar</label><br>
-            <input type="radio" id="eur" name="currency" value="eur">
-            <label for="eur">EUR (&#8364): Euro</label><br>
-            <input type="radio" id="gbp" name="currency" value="gbp">
-            <label for="gbp">GBP (&#163): British Pound Sterling</label><br>
-            <input type="radio" id="mxn" name="currency" value="mxn">
-            <label for="mxn">MXN (MX$): Mexican Peso</label><br>
-            <input type="radio" id="jpy" name="currency" value="jpy">
-            <label for="jpy">JPY (&#165): Japanese Yen</label><br>
+  <fieldset id="starting-currency-checkboxes">
+    <legend>Starting Currency:</legend>
+    <div>
+      <input type="radio" id="usd" name="currency" value="usd" checked>
+      <label for="usd">USD ($): United States Dollar</label><br>
+      <input type="radio" id="eur" name="currency" value="eur">
+      <label for="eur">EUR (&#8364): Euro</label><br>
+      <input type="radio" id="gbp" name="currency" value="gbp">
+      <label for="gbp">GBP (&#163): British Pound Sterling</label><br>
+      <input type="radio" id="mxn" name="currency" value="mxn">
+      <label for="mxn">MXN (MX$): Mexican Peso</label><br>
+      <input type="radio" id="jpy" name="currency" value="jpy">
+      <label for="jpy">JPY (&#165): Japanese Yen</label><br>
 
-        </div>
-    </fieldset>
+    </div>
+  </fieldset>
 
-    <section class="add-person-section">
-        <p>Add Person: </p>
-        <div class="add-person-input">
-            <input type="text" id="name" placeholder="Enter name"></p>
-            <button id="add-person-button">Add</button>
-        </div>
-    </section>
+  <section class="add-person-section">
+    <p>Add Person: </p>
+    <div class="add-person-input">
+      <input type="text" id="name" placeholder="Enter name"></p>
+      <button id="add-person-button">Add</button>
+    </div>
+  </section>
 
-    <div class="receipt-section">
-        <h3 style="text-align: center;">Input Receipt Here</h3>
-        <table>
-            <tr>
-                <th class="item">Item</th>
-                <th class="price">Price</th>
-                <th class="shared-by">Shared By</th>
-            </tr>
-            <!-- 
+  <div class="receipt-section">
+    <h3 style="text-align: center;">Input Receipt Here</h3>
+    <table>
+      <tr>
+        <th class="item">Item</th>
+        <th class="price">Price</th>
+        <th class="shared-by">Shared By</th>
+      </tr>
+      <!-- 
                 Basic sample format for receipt input section
                 <tr>
                 <td class="item">
@@ -72,54 +73,56 @@
                     <label for="name1">Name 1</label>
                 </td>
             </tr> -->
-        </table>
-        <div class="add-row-container">
-            <button id="add-row-button" title="Add Row">+</button>
-            <button id="remove-row-button" title="Remove Row">&#8211;</button>
-        </div>
+    </table>
+    <div class="add-row-container">
+      <button id="add-row-button" title="Add Row">+</button>
+      <button id="remove-row-button" title="Remove Row">&#8211;</button>
     </div>
+  </div>
 
-    <div class="gratuity">
-        <div class="gratuity-summary">
-            <h3>Gratuity & Tax</h3>
-            <p class="description"><i>You can add the total gratuity and tax amount as a percentage or a dollar amount. Either way, it is distributed proportionately to each
-                person's individual cost to ensure fair contributions.</i></p>    
-        </div>
-        <div class="gratuity-input-container">
-            <div class="gratuity-percentage-div">
-                <input type="radio" id="gratuity-percentage-option" name="gratuity-option" checked>
-                <label for="gratuity-percentage-option">(%)</label>
-                <input type="number" id="gratuity-percentage" placeholder="%" pattern="[0-9]*[.,]?[0-9]*" inputmode="decimal">
-            </div>
-            <div>
-                <input type="radio" id="gratuity-amount-option" name="gratuity-option">
-                <label for="gratuity-amount-option">(<span class="currency-symbol"></span>)</label>
-                <input type="number" id="gratuity-amount" placeholder="" pattern="[0-9]*[.,]?[0-9]*" inputmode="decimal" disabled>
-            </div>
-        </div>
+  <div class="gratuity">
+    <div class="gratuity-summary">
+      <h3>Gratuity & Tax</h3>
+      <p class="description"><i>You can add the total gratuity and tax amount as a percentage or a dollar amount. Either
+          way, it is distributed proportionately to each
+          person's individual cost to ensure fair contributions.</i></p>
     </div>
-
-    <div class="calculate-split-button-container">
-        <span></span>
-        <button id="calculate-split-button">Calculate Split</button>
-        <span></span>
+    <div class="gratuity-input-container">
+      <div class="gratuity-percentage-div">
+        <input type="radio" id="gratuity-percentage-option" name="gratuity-option" checked>
+        <label for="gratuity-percentage-option">(%)</label>
+        <input type="number" id="gratuity-percentage" placeholder="%" pattern="[0-9]*[.,]?[0-9]*" inputmode="decimal">
+      </div>
+      <div>
+        <input type="radio" id="gratuity-amount-option" name="gratuity-option">
+        <label for="gratuity-amount-option">(<span class="currency-symbol"></span>)</label>
+        <input type="number" id="gratuity-amount" placeholder="" pattern="[0-9]*[.,]?[0-9]*" inputmode="decimal"
+          disabled>
+      </div>
     </div>
+  </div>
 
-    <div class="owed-section">
-        <h3 style="text-align: center;">Price After Split</h3>
-        <table>
-            <tr>
-                <th class="name">Name</th>
-                <th class="original-cost">Cost (<span class="currency-symbol"></span>)</th>
-                <th class="converted-cost">Cost ($)</th>
-            </tr>
-        </table>
-        <div id="unaccounted-for-message">
-            <span id="unaccounted-for-text"></span>
-        </div>
+  <div class="calculate-split-button-container">
+    <span></span>
+    <button id="calculate-split-button">Calculate Split</button>
+    <span></span>
+  </div>
+
+  <div class="owed-section">
+    <h3 style="text-align: center;">Price After Split</h3>
+    <table>
+      <tr>
+        <th class="name">Name</th>
+        <th class="original-cost">Cost (<span class="currency-symbol"></span>)</th>
+        <th class="converted-cost">Cost ($)</th>
+      </tr>
+    </table>
+    <div id="unaccounted-for-message">
+      <span id="unaccounted-for-text"></span>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 
 
 </body>
