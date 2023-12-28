@@ -402,7 +402,7 @@ function displayTotals(owedPerPerson) {
     let verificationResult = document.getElementById('unaccounted-for-text');
 
     if ((totalOwed - totalAccountedFor) > buffer) {
-        verificationResult.innerHTML = `&#9888; Error: incorrect pricing. Missing $${convertCurrency(totalOwed - totalAccountedFor).toFixed(2)} (${originalCurrencySymbol}${(totalOwed - (totalAccountedFor/currencyConversion)).toFixed(2)})`;
+        verificationResult.innerHTML = `&#9888; Error: incorrect pricing. Make sure each item is shared by at least one person.`;
         verificationResult.style.color = 'red';
         newRow.style.backgroundColor = 'red';
         verificationResult.style.display = 'block';
