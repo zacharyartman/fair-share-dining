@@ -19,24 +19,25 @@ document.getElementById('calculate-split-button').onclick = onCalculateSplit;
 document.getElementById('add-row-button').onclick = addRow;
 document.getElementById('remove-row-button').onclick = removeRow;
 
+// hide the header if X button clicked
 document.getElementById('close-header').onclick = () => {
     document.querySelector('.new-version-header').style.display = 'none';
 }
 
+// if in the name field, clicking enter adds the person
 document.getElementById('name').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       addPerson();
     }
 });
 
+// if in the price field, clicking enter adds a new row
 document.addEventListener('keydown', (e) => {
     if (e.target.matches('.price-field') && e.key === 'Enter') {
         addRow();
         document.getElementById(`row${rowCount}-item-text-field`).focus();
     }
 });
-
-
 
 function addPerson() {
     let nameInput = document.getElementById("name");
@@ -55,6 +56,7 @@ function addPerson() {
         addOneCheckboxPerRow(name);    
     }
 }
+
 
 function addItemsToItemsList() {
     // format item : price
@@ -78,7 +80,7 @@ function addItemsToItemsList() {
         }
 
         if (isNaN(itemPrice)) {
-            alert(`Invalid item price in row ${row}. Please price the item.`);
+            alert(`Invalid item price in row ${row}. Please correct the item price.`);
             hasError = true;
             break;
         }
@@ -90,13 +92,15 @@ function addItemsToItemsList() {
 }
 
 
-// WORKS
+// Gets the price of each item per person
 function getItemPricePerPerson() {
+    // format itemName : pricePerPerson
     let itemPricePerPerson = {};
     for (let itemName in items) {
         let count = 0;
         let price = items[itemName];
 
+        // loop through each person to get a total count of people sharing an item
         for (let personName in persons) {
             if (persons[personName].includes(itemName)) {
                 count ++;
@@ -107,15 +111,17 @@ function getItemPricePerPerson() {
     return itemPricePerPerson;
 }
 
-// WORKS
+// gets each person's individual prices owed
 function getIndividualPricesOwed() {
     // format personName : amountOwed
     let owedPerPerson = {};
     let itemPricePerPerson = getItemPricePerPerson();
     for (let personName in persons) { 
         let totalOwed = 0;
+        // list of items that person has selected
         let personItems = persons[personName];
         for (let i = 0; i < personItems.length; i++) {
+            // get each item and add its price per person to the total this person owes
             itemName = personItems[i];
             totalOwed += itemPricePerPerson[itemName];
         }
@@ -124,16 +130,18 @@ function getIndividualPricesOwed() {
     return owedPerPerson;
 }
 
+// gets a string of checkboxes for shared by column
 function getCheckBoxesString(row) {
     var checkboxesString = "";
     for (let personName in persons) {
         let checkboxID = `row${row}-${personName}`
         checkboxesString += `<div><input type="checkbox" id="${checkboxID}" name="${personName}">`;
-        checkboxesString += `<label for="${checkboxID}">${personName}</label></div>`;
+        checkboxesString += `<label for="${checkboxID}">${personName.split('_').join(' ')}</label></div>`;
     }
     return checkboxesString;
 }
 
+// creates one checkbox element if a new person is added
 function getOneCheckboxElement(personName, row) {
     let checkboxID = `row${row}-${personName}`;
 
@@ -156,6 +164,7 @@ function getOneCheckboxElement(personName, row) {
     return container;
 }
 
+// when a new person is added, add a checkbox for them for each existing row
 function addOneCheckboxPerRow(personName) {
     for (let row = 1; row < rowCount + 1; row++) {
         let container = getOneCheckboxElement(personName, row);
@@ -190,7 +199,6 @@ function addRow() {
 
     let priceSymbolSpan = document.createElement('span');
     priceSymbolSpan.className = 'currency-symbol';
-    // TODO: CHANGE TO EURO/CURRENCY SYMBOL
     priceSymbolSpan.textContent = originalCurrencySymbol;
     let priceInput = document.createElement('input');
     priceInput.type = 'number';
@@ -216,6 +224,7 @@ function addRow() {
 }
 
 function removeRow() {
+    // don't let the user remove the first row
     if (rowCount > 1) {
         let rowID = `table-row${rowCount}`;
         let rowElement = document.getElementById(rowID);
@@ -230,7 +239,7 @@ function removeRow() {
 function onCalculateSplit() {
     // add all the items to the list
     if (!addItemsToItemsList()) {
-        return; // return if theres a dupe.
+        return; // return if there is an error.
     }
 
     for (let personName in persons) {
@@ -239,6 +248,7 @@ function onCalculateSplit() {
     }
 
     for (let row = 1; row < rowCount + 1; row++) {
+        // checks what items each person has selected.
         for (let personName in persons) {
             let checkboxID = `row${row}-${personName}`
             let selector = `#${checkboxID}:checked`;
@@ -254,6 +264,7 @@ function onCalculateSplit() {
     }
     // get all individual prices owed, then display it
     let owedPerPerson = getIndividualPricesOwed();
+    // gets the sum
     let totalBill = Object.values(owedPerPerson).reduce((a, b) => a + b, 0);
 
     if (gratuityMode === 'percentage') {
@@ -293,7 +304,6 @@ function onCalculateSplit() {
             let priceCellOriginalCurrency = document.createElement('td');
             priceCellOriginalCurrency.className = 'owed-price-original-currency';
             let originalPriceSymbolSpan = document.createElement('span');
-            // TODO: CHANGE TO EURO/CURRENCY SYMBOL
             originalPriceSymbolSpan.className = 'currency-symbol';
             originalPriceSymbolSpan.textContent = originalCurrencySymbol;
             let originalPriceSpan = document.createElement('span');
@@ -307,7 +317,6 @@ function onCalculateSplit() {
             let priceCellUSD = document.createElement('td');
             priceCellUSD.className = 'owed-price-usd';
             let USDPriceSymbolSpan = document.createElement('span');
-            // TODO: CHANGE TO UPDATED CURRENCY SYMBOL
             USDPriceSymbolSpan.textContent = '$'
             let USDPriceSpan = document.createElement('span');
             USDPriceSpan.id = `${personName}-owed-usd`;
@@ -422,7 +431,7 @@ function convertCurrency(oldPrice) {
 
 function setCurrency(currency) {
     if (currency == "eur") {
-        /* euro to usd */
+        // euro to usd
         currencyConversion = 1.1;
         originalCurrencySymbol = "\u20AC";
         updateCurrencySymbols();        
