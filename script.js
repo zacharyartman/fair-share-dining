@@ -5,9 +5,9 @@ let items = {};
 
 let rowCount = 0;
 // default starting currency
-let originalCurrency = 'eur';
-let currencyConversion = 1.1;
-let originalCurrencySymbol = "\u20AC";
+let originalCurrency = 'usd';
+let currencyConversion = 1.0;
+let originalCurrencySymbol = "$";
 
 let gratuityPercentage = 0;
 let gratuityAmount = 0;
@@ -430,7 +430,13 @@ function convertCurrency(oldPrice) {
 }
 
 function setCurrency(currency) {
-    if (currency == "eur") {
+    if (currency == "usd") {
+        // only usd
+        currencyConversion = 1.0;
+        originalCurrencySymbol = "$";
+        updateCurrencySymbols();        
+    }
+    else if (currency == "eur") {
         // euro to usd
         currencyConversion = 1.1;
         originalCurrencySymbol = "\u20AC";
@@ -458,7 +464,7 @@ function setCurrency(currency) {
     }
 }
 
-const currencies = ['gbp', 'eur', 'mxn', 'jpy'];
+const currencies = ['usd', 'gbp', 'eur', 'mxn', 'jpy'];
 
 currencies.forEach(currency => {
     document.getElementById(currency).addEventListener('click', () => {
