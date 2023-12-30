@@ -13,7 +13,6 @@ let gratuityPercentage = 0;
 let gratuityAmount = 0;
 let gratuityMode = 'percentage'; // 'percentage' or 'amount'
 
-
 document.getElementById('add-person-button').onclick = addPerson;
 document.getElementById('calculate-split-button').onclick = onCalculateSplit;
 document.getElementById('add-row-button').onclick = addRow;
@@ -221,6 +220,7 @@ function addRow() {
     newRow.appendChild(sharedByCell);
 
     receiptTableBody.appendChild(newRow);
+    document.getElementById(`table-row${rowCount}`).scrollIntoView();
 }
 
 function removeRow() {
@@ -503,5 +503,6 @@ function applyGratuity() {
 
 // ADD ONE ROW ON INITIALIZATION
 addRow();
+window.scrollTo(0,0);
 setCurrency(originalCurrency);
 updateCurrencySymbols();
