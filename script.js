@@ -21,6 +21,11 @@ document.getElementById('remove-row-button').onclick = removeRow;
 // hide the header if X button clicked
 document.getElementById('close-header').onclick = () => {
     document.querySelector('.new-version-header').style.display = 'none';
+    localStorage.setItem('headerClosed', 'true');
+}
+// if the header has been closed already, don't show it on refresh
+if (localStorage.getItem('headerClosed') === 'true') {
+    document.querySelector('.new-version-header').style.display = 'none';
 }
 
 // if in the name field, clicking enter adds the person
@@ -432,6 +437,7 @@ function convertCurrency(oldPrice) {
 }
 
 function setCurrency(currency) {
+    localStorage.setItem('selectedCurrency', currency);
     if (currency == "usd") {
         // only usd
         currencyConversion = 1.0;
@@ -505,5 +511,13 @@ function applyGratuity() {
 
 // ADD ONE ROW ON INITIALIZATION
 addRow();
-setCurrency(originalCurrency);
+// used so that the currency is saved when reloading the site
+const savedCurrency = localStorage.getItem('selectedCurrency');
+if (savedCurrency) {
+    setCurrency(savedCurrency);
+    document.getElementById(savedCurrency).checked = true;
+} else {
+    setCurrency(originalCurrency);
+    document.getElementById(originalCurrency).checked = true;
+}
 updateCurrencySymbols();
