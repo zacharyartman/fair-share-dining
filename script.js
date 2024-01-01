@@ -220,7 +220,9 @@ function addRow() {
     newRow.appendChild(sharedByCell);
 
     receiptTableBody.appendChild(newRow);
-    document.getElementById(`table-row${rowCount}`).scrollIntoView();
+    if (rowCount > 1) {
+        document.getElementById(`table-row${rowCount}`).scrollIntoView();
+    }
 }
 
 function removeRow() {
@@ -503,6 +505,5 @@ function applyGratuity() {
 
 // ADD ONE ROW ON INITIALIZATION
 addRow();
-window.scrollTo(0,0);
 setCurrency(originalCurrency);
 updateCurrencySymbols();
